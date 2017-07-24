@@ -26,6 +26,9 @@ type Product_variables struct {
 	Uses_qcom_bsp_legacy struct {
 		Cppflags []string
 	}
+	Has_legacy_camera_hal1 struct {
+		Cflags []string
+	}
 }
 
 type ProductVariables struct {
@@ -39,4 +42,5 @@ type ProductVariables struct {
 	Uses_generic_camera_parameter_library  *bool `json:",omitempty"`
 	Specific_camera_parameter_library  *string `json:",omitempty"`
 	Uses_qcom_bsp_legacy  *bool `json:",omitempty"`
+	Has_legacy_camera_hal1  *bool `json:",omitempty"`
 }
