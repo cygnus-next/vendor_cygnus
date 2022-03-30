@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2020 Cygnus
+# Copyright (C) 2022 Cygnus
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,11 +17,6 @@
 
 # Props
 include vendor/cygnus/configs/props.mk
-
-# Fonts
-include vendor/cygnus/configs/fonts.mk
-
-
 
 # QCOM common
 include device/qcom/common/Android.mk
@@ -188,35 +183,8 @@ endif
 include vendor/qcom/opensource/commonsys-intf/bluetooth/bt-commonsys-intf-board.mk
 $(call inherit-product, vendor/qcom/opensource/commonsys-intf/bluetooth/bt-system-opensource-product.mk)
 
-# Accents
-PRODUCT_PACKAGES += \
-    AccentColoriOSBlueOverlay \
-    AccentColorHadalZoneOverlay \
-    AccentColorLostInForestOverlay \
-    AccentColorMagentaOverlay \
-    AccentColorPixelBlueOverlay \
-    AccentColorPurpleHeatOverlay \
-    AccentColorRedOverlay \
-    AccentColorRoseOverlay \
-    AccentColorScooterOverlay \
-    AccentColorSlateOverlay \
-    AccentColorSuperNovaOverlay \
-    AccentColorTealOverlay \
-    AccentColorTorchRedOverlay
-
-
-# Fonts
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,vendor/cygnus/prebuilt/fonts/,$(TARGET_COPY_OUT_PRODUCT)/fonts) \
-    $(call find-copy-subdir-files,*,vendor/cygnus/prebuilt/fonts-system/,$(TARGET_COPY_OUT_SYSTEM)/fonts) \
-    vendor/cygnus/prebuilt/etc/fonts_customization.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/fonts_customization.xml
-
 # Common
 $(call inherit-product, device/qcom/common/common.mk)
-
-PRODUCT_PACKAGES += \
-    FontManropeOverlay \
-    FontOnePlusSansOverlay
 
 # Permissions
 PRODUCT_COPY_FILES += \
