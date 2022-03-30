@@ -26,6 +26,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml
 
+# Cygnus
+PRODUCT_PACKAGES += \
+    CygnusFrameworkOverlay
+
 # FaceUnlock
 ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
 
