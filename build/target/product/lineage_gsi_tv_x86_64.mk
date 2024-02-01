@@ -1,4 +1,4 @@
-# Copyright (C) 2018-2020 The LineageOS Project
+# Copyright (C) 2018-2020 The CygnusOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,13 +14,13 @@
 
 $(call inherit-product, device/google/atv/products/aosp_tv_x86_64.mk)
 
-include vendor/lineage/build/target/product/lineage_generic_tv_target.mk
+include vendor/cygnus/build/target/product/cygnus_generic_tv_target.mk
 
 TARGET_SUPPORTS_64_BIT_APPS := true
 
-PRODUCT_NAME := lineage_gsi_tv_x86_64
+PRODUCT_NAME := cygnus_gsi_tv_x86_64
 
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS :=
 
-PRODUCT_SDK_ADDON_NAME := lineage
+PRODUCT_SDK_ADDON_NAME := cygnus
 PRODUCT_SDK_ADDON_SYS_IMG_SOURCE_PROP := $(LOCAL_PATH)/source.properties

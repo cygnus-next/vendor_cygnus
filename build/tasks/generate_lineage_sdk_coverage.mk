@@ -15,63 +15,63 @@
 # limitations under the License.
 #
 
-# Makefile for producing lineage sdk coverage reports.
-# Run "make lineage-sdk-test-coverage" in the $ANDROID_BUILD_TOP directory.
+# Makefile for producing cygnus sdk coverage reports.
+# Run "make cygnus-sdk-test-coverage" in the $ANDROID_BUILD_TOP directory.
 
-lineage_sdk_api_coverage_exe := $(HOST_OUT_EXECUTABLES)/lineage-sdk-api-coverage
+cygnus_sdk_api_coverage_exe := $(HOST_OUT_EXECUTABLES)/cygnus-sdk-api-coverage
 dexdeps_exe := $(HOST_OUT_EXECUTABLES)/dexdeps
 
-coverage_out := $(HOST_OUT)/lineage-sdk-api-coverage
+coverage_out := $(HOST_OUT)/cygnus-sdk-api-coverage
 
-api_text_description := lineage-sdk/api/lineage_current.txt
+api_text_description := cygnus-sdk/api/cygnus_current.txt
 api_xml_description := $(coverage_out)/api.xml
 $(api_xml_description) : $(api_text_description) $(APICHECK)
 	$(hide) echo "Converting API file to XML: $@"
 	$(hide) mkdir -p $(dir $@)
 	$(hide) $(APICHECK_COMMAND) -convert2xml $< $@
 
-lineage-sdk-test-coverage-report := $(coverage_out)/lineage-sdk-test-coverage.html
+cygnus-sdk-test-coverage-report := $(coverage_out)/cygnus-sdk-test-coverage.html
 
-lineage_sdk_tests_apk := $(call intermediates-dir-for,APPS,LineagePlatformTests)/package.apk
-lineagesettingsprovider_tests_apk := $(call intermediates-dir-for,APPS,LineageSettingsProviderTests)/package.apk
-lineage_sdk_api_coverage_dependencies := $(lineage_sdk_api_coverage_exe) $(dexdeps_exe) $(api_xml_description)
+cygnus_sdk_tests_apk := $(call intermediates-dir-for,APPS,CygnusPlatformTests)/package.apk
+cygnussettingsprovider_tests_apk := $(call intermediates-dir-for,APPS,CygnusSettingsProviderTests)/package.apk
+cygnus_sdk_api_coverage_dependencies := $(cygnus_sdk_api_coverage_exe) $(dexdeps_exe) $(api_xml_description)
 
-$(lineage-sdk-test-coverage-report): PRIVATE_TEST_CASES := $(lineage_sdk_tests_apk) $(lineagesettingsprovider_tests_apk)
-$(lineage-sdk-test-coverage-report): PRIVATE_LINEAGE_SDK_API_COVERAGE_EXE := $(lineage_sdk_api_coverage_exe)
-$(lineage-sdk-test-coverage-report): PRIVATE_DEXDEPS_EXE := $(dexdeps_exe)
-$(lineage-sdk-test-coverage-report): PRIVATE_API_XML_DESC := $(api_xml_description)
-$(lineage-sdk-test-coverage-report): $(lineage_sdk_tests_apk) $(lineagesettingsprovider_tests_apk) $(lineage_sdk_api_coverage_dependencies) | $(ACP)
-	$(call generate-lineage-coverage-report,"LINEAGE-SDK API Coverage Report",\
+$(cygnus-sdk-test-coverage-report): PRIVATE_TEST_CASES := $(cygnus_sdk_tests_apk) $(cygnussettingsprovider_tests_apk)
+$(cygnus-sdk-test-coverage-report): PRIVATE_CYGNUS_SDK_API_COVERAGE_EXE := $(cygnus_sdk_api_coverage_exe)
+$(cygnus-sdk-test-coverage-report): PRIVATE_DEXDEPS_EXE := $(dexdeps_exe)
+$(cygnus-sdk-test-coverage-report): PRIVATE_API_XML_DESC := $(api_xml_description)
+$(cygnus-sdk-test-coverage-report): $(cygnus_sdk_tests_apk) $(cygnussettingsprovider_tests_apk) $(cygnus_sdk_api_coverage_dependencies) | $(ACP)
+	$(call generate-cygnus-coverage-report,"CYGNUS-SDK API Coverage Report",\
 			$(PRIVATE_TEST_CASES),html)
 
-.PHONY: lineage-sdk-test-coverage
-lineage-sdk-test-coverage : $(lineage-sdk-test-coverage-report)
+.PHONY: cygnus-sdk-test-coverage
+cygnus-sdk-test-coverage : $(cygnus-sdk-test-coverage-report)
 
-# Put the test coverage report in the dist dir if "lineage-sdk" is among the build goals.
-ifneq ($(filter lineage-sdk, $(MAKECMDGOALS)),)
-  $(call dist-for-goals, lineage-sdk, $(lineage-sdk-test-coverage-report):lineage-sdk-test-coverage-report.html)
+# Put the test coverage report in the dist dir if "cygnus-sdk" is among the build goals.
+ifneq ($(filter cygnus-sdk, $(MAKECMDGOALS)),)
+  $(call dist-for-goals, cygnus-sdk, $(cygnus-sdk-test-coverage-report):cygnus-sdk-test-coverage-report.html)
 endif
 
 # Arguments;
 #  1 - Name of the report printed out on the screen
 #  2 - List of apk files that will be scanned to generate the report
 #  3 - Format of the report
-define generate-lineage-coverage-report
+define generate-cygnus-coverage-report
 	$(hide) mkdir -p $(dir $@)
-	$(hide) $(PRIVATE_LINEAGE_SDK_API_COVERAGE_EXE) -d $(PRIVATE_DEXDEPS_EXE) -a $(PRIVATE_API_XML_DESC) -f $(3) -o $@ $(2) -cm
+	$(hide) $(PRIVATE_CYGNUS_SDK_API_COVERAGE_EXE) -d $(PRIVATE_DEXDEPS_EXE) -a $(PRIVATE_API_XML_DESC) -f $(3) -o $@ $(2) -cm
 	@ echo $(1): file://$@
 endef
 
 # Reset temp vars
-lineage_sdk_api_coverage_dependencies :=
-lineage-sdk-combined-coverage-report :=
-lineage-sdk-combined-xml-coverage-report :=
-lineage-sdk-verifier-coverage-report :=
-lineage-sdk-test-coverage-report :=
+cygnus_sdk_api_coverage_dependencies :=
+cygnus-sdk-combined-coverage-report :=
+cygnus-sdk-combined-xml-coverage-report :=
+cygnus-sdk-verifier-coverage-report :=
+cygnus-sdk-test-coverage-report :=
 api_xml_description :=
 api_text_description :=
 coverage_out :=
 dexdeps_exe :=
-lineage_sdk_api_coverage_exe :=
-lineage_sdk_verifier_apk :=
-android_lineage_sdk_zip :=
+cygnus_sdk_api_coverage_exe :=
+cygnus_sdk_verifier_apk :=
+android_cygnus_sdk_zip :=

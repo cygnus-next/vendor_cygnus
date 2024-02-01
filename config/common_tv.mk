@@ -1,15 +1,15 @@
-# Inherit common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common.mk)
+# Inherit common Cygnus stuff
+$(call inherit-product, vendor/cygnus/config/common.mk)
 
-# Inherit Lineage atv device tree
-$(call inherit-product, device/lineage/atv/lineage_atv.mk)
+# Inherit Cygnus atv device tree
+$(call inherit-product, device/cygnus/atv/cygnus_atv.mk)
 
 # AOSP packages
 PRODUCT_PACKAGES += \
     LeanbackIME
 
-# Lineage packages
+# Cygnus packages
 PRODUCT_PACKAGES += \
-    LineageCustomizer
+    CygnusCustomizer
 
-PRODUCT_PACKAGE_OVERLAYS += vendor/lineage/overlay/tv
+PRODUCT_PACKAGE_OVERLAYS += vendor/cygnus/overlay/tv

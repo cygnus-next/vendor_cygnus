@@ -1,2 +1,2 @@
-# Include LineageOS versions
-include $(TOPDIR)vendor/lineage/build/core/main_version.mk
+# Include CygnusOS versions
+include $(TOPDIR)vendor/cygnus/build/core/main_version.mk

@@ -1,5 +1,5 @@
-# Inherit common mobile Lineage stuff
-$(call inherit-product, vendor/lineage/config/common.mk)
+# Inherit common mobile Cygnus stuff
+$(call inherit-product, vendor/cygnus/config/common.mk)
 
 # Apps
 PRODUCT_PACKAGES += \
@@ -26,10 +26,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_res_images
 
-ifneq ($(WITH_LINEAGE_CHARGER),false)
+ifneq ($(WITH_CYGNUS_CHARGER),false)
 PRODUCT_PACKAGES += \
-    lineage_charger_animation \
-    lineage_charger_animation_vendor
+    cygnus_charger_animation \
+    cygnus_charger_animation_vendor
 endif
 
 # Customizations
@@ -65,7 +65,7 @@ PRODUCT_PACKAGES += \
     IconShapeTaperedRectOverlay \
     IconShapeTeardropOverlay \
     IconShapeVesselOverlay \
-    LineageNavigationBarNoHint \
+    CygnusNavigationBarNoHint \
     NavigationBarMode2ButtonOverlay
 
 # Media
@@ -78,6 +78,6 @@ PRODUCT_PACKAGES += \
 
 # Themes
 PRODUCT_PACKAGES += \
-    LineageBlackTheme \
+    CygnusBlackTheme \
     ThemePicker \
     ThemesStub

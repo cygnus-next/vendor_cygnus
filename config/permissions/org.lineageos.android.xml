@@ -14,8 +14,8 @@
      limitations under the License.
 -->
 
-<!-- This feature shows that this is LineageOS -->
+<!-- This feature shows that this is CygnusOS -->
 <permissions>
-    <feature name="org.lineageos.android" />
+    <feature name="org.cygnusos.android" />
 </permissions>
 

@@ -1,4 +1,4 @@
-# Copyright (C) 2019-2020 The LineageOS Project
+# Copyright (C) 2019-2020 The CygnusOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, vendor/lineage/config/common_car.mk)
+$(call inherit-product, vendor/cygnus/config/common_car.mk)
 
 EMULATOR_VENDOR_NO_SENSORS := true
 EMULATOR_VENDOR_NO_SOUND := true

@@ -1,7 +1,7 @@
 # Allow vendor/extra to override any property by setting it first
 $(call inherit-product-if-exists, vendor/extra/product.mk)
 
-PRODUCT_BRAND ?= LineageOS
+PRODUCT_BRAND ?= CygnusOS
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
@@ -26,18 +26,18 @@ endif
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/lineage/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/lineage/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/lineage/prebuilt/common/bin/50-lineage.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-lineage.sh
+    vendor/cygnus/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/cygnus/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/cygnus/prebuilt/common/bin/50-cygnus.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-cygnus.sh
 
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
-    system/addon.d/50-lineage.sh
+    system/addon.d/50-cygnus.sh
 
 ifneq ($(strip $(AB_OTA_PARTITIONS) $(AB_OTA_POSTINSTALL_CONFIG)),)
 PRODUCT_COPY_FILES += \
-    vendor/lineage/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
-    vendor/lineage/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
-    vendor/lineage/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
+    vendor/cygnus/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
+    vendor/cygnus/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
+    vendor/cygnus/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
 
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/bin/backuptool_ab.sh \
@@ -50,13 +50,13 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 endif
 endif
 
-# Lineage-specific broadcast actions whitelist
+# Cygnus-specific broadcast actions whitelist
 PRODUCT_COPY_FILES += \
-    vendor/lineage/config/permissions/lineage-sysconfig.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/lineage-sysconfig.xml
+    vendor/cygnus/config/permissions/cygnus-sysconfig.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/cygnus-sysconfig.xml
 
-# Lineage-specific init rc file
+# Cygnus-specific init rc file
 PRODUCT_COPY_FILES += \
-    vendor/lineage/prebuilt/common/etc/init/init.lineage-system_ext.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.lineage-system_ext.rc
+    vendor/cygnus/prebuilt/common/etc/init/init.cygnus-system_ext.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.cygnus-system_ext.rc
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -66,17 +66,17 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:$(TARGET_COPY_OUT_PRODUCT)/usr/keylayout/Vendor_045e_Product_0719.kl
 
-# This is Lineage!
+# This is Cygnus!
 PRODUCT_COPY_FILES += \
-    vendor/lineage/config/permissions/org.lineageos.android.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/org.lineageos.android.xml
+    vendor/cygnus/config/permissions/org.cygnusos.android.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/org.cygnusos.android.xml
 
 # Enforce privapp-permissions whitelist
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.control_privapp_permissions=enforce
 
-ifneq ($(TARGET_DISABLE_LINEAGE_SDK), true)
-# Lineage SDK
-include vendor/lineage/config/lineage_sdk_common.mk
+ifneq ($(TARGET_DISABLE_CYGNUS_SDK), true)
+# Cygnus SDK
+include vendor/cygnus/config/cygnus_sdk_common.mk
 endif
 
 # Do not include art debug targets
@@ -92,15 +92,15 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 
 ifneq ($(TARGET_DISABLE_EPPE),true)
 # Require all requested packages to exist
-$(call enforce-product-packages-exist-internal,$(wildcard device/*/$(LINEAGE_BUILD)/$(TARGET_PRODUCT).mk),product_manifest.xml rild Calendar Launcher3 Launcher3Go Launcher3QuickStep Launcher3QuickStepGo android.hidl.memory@1.0-impl.vendor vndk_apex_snapshot_package)
+$(call enforce-product-packages-exist-internal,$(wildcard device/*/$(CYGNUS_BUILD)/$(TARGET_PRODUCT).mk),product_manifest.xml rild Calendar Launcher3 Launcher3Go Launcher3QuickStep Launcher3QuickStepGo android.hidl.memory@1.0-impl.vendor vndk_apex_snapshot_package)
 endif
 
 ifeq ($(PRODUCT_IS_ATV),)
 # Include AOSP audio files
-include vendor/lineage/config/aosp_audio.mk
+include vendor/cygnus/config/aosp_audio.mk
 
-# Include Lineage audio files
-include vendor/lineage/config/lineage_audio.mk
+# Include Cygnus audio files
+include vendor/cygnus/config/cygnus_audio.mk
 
 # Default notification/alarm sounds
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -118,7 +118,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     build-manifest
 
-# Lineage packages
+# Cygnus packages
 ifeq ($(PRODUCT_IS_ATV),)
 PRODUCT_PACKAGES += \
     ExactCalculator \
@@ -127,22 +127,22 @@ endif
 
 ifeq ($(PRODUCT_IS_AUTOMOTIVE),)
 PRODUCT_PACKAGES += \
-    LineageParts \
-    LineageSetupWizard
+    CygnusParts \
+    CygnusSetupWizard
 endif
 
 PRODUCT_PACKAGES += \
-    LineageSettingsProvider \
+    CygnusSettingsProvider \
     Updater
 
 PRODUCT_COPY_FILES += \
-    vendor/lineage/prebuilt/common/etc/init/init.lineage-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.lineage-updater.rc
+    vendor/cygnus/prebuilt/common/etc/init/init.cygnus-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.cygnus-updater.rc
 
 # Config
 PRODUCT_PACKAGES += \
     SimpleDeviceConfig
 
-# Extra tools in Lineage
+# Extra tools in Cygnus
 PRODUCT_PACKAGES += \
     bash \
     curl \
@@ -181,7 +181,7 @@ PRODUCT_PACKAGES += \
     start-ssh
 
 PRODUCT_COPY_FILES += \
-    vendor/lineage/prebuilt/common/etc/init/init.openssh.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/init.openssh.rc
+    vendor/cygnus/prebuilt/common/etc/init/init.openssh.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/init.openssh.rc
 
 # rsync
 PRODUCT_PACKAGES += \
@@ -217,10 +217,10 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     dalvik.vm.systemuicompilerfilter=speed
 
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/lineage/overlay/no-rro
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/cygnus/overlay/no-rro
 PRODUCT_PACKAGE_OVERLAYS += \
-    vendor/lineage/overlay/common \
-    vendor/lineage/overlay/no-rro
+    vendor/cygnus/overlay/common \
+    vendor/cygnus/overlay/no-rro
 
 PRODUCT_PACKAGES += \
     DocumentsUIOverlay \
@@ -237,11 +237,11 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/crowdin/overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/crowdin/overlay
 
 PRODUCT_EXTRA_RECOVERY_KEYS += \
-    vendor/lineage/build/target/product/security/lineage
+    vendor/cygnus/build/target/product/security/cygnus
 
-include vendor/lineage/config/version.mk
+include vendor/cygnus/config/version.mk
 
--include vendor/lineage-priv/keys/keys.mk
+-include vendor/cygnus-priv/keys/keys.mk
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
--include vendor/lineage/config/partner_gms.mk
+-include vendor/cygnus/config/partner_gms.mk

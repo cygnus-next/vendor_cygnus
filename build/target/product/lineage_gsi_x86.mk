@@ -1,4 +1,4 @@
-# Copyright (C) 2018-2022 The LineageOS Project
+# Copyright (C) 2018-2022 The CygnusOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,10 +14,10 @@
 
 $(call inherit-product, device/generic/common/gsi_x86.mk)
 
-include vendor/lineage/build/target/product/lineage_generic_target.mk
+include vendor/cygnus/build/target/product/cygnus_generic_target.mk
 
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 
 TARGET_NO_KERNEL_OVERRIDE := true
 
-PRODUCT_NAME := lineage_gsi_x86
+PRODUCT_NAME := cygnus_gsi_x86

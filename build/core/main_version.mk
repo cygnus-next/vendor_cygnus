@@ -4,22 +4,22 @@ ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.build.fingerprint=$(BUILD_FINGERPRINT)
 endif
 
-# LineageOS System Version
+# CygnusOS System Version
 ADDITIONAL_SYSTEM_PROPERTIES += \
-    ro.lineage.version=$(LINEAGE_VERSION) \
-    ro.lineage.releasetype=$(LINEAGE_BUILDTYPE) \
-    ro.lineage.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
-    ro.modversion=$(LINEAGE_VERSION) \
-    ro.lineagelegal.url=https://lineageos.org/legal
+    ro.cygnus.version=$(CYGNUS_VERSION) \
+    ro.cygnus.releasetype=$(CYGNUS_BUILDTYPE) \
+    ro.cygnus.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
+    ro.modversion=$(CYGNUS_VERSION) \
+    ro.cygnuslegal.url=https://cygnusos.org/legal
 
-# LineageOS Platform Display Version
+# CygnusOS Platform Display Version
 ADDITIONAL_SYSTEM_PROPERTIES += \
-    ro.lineage.display.version=$(LINEAGE_DISPLAY_VERSION)
+    ro.cygnus.display.version=$(CYGNUS_DISPLAY_VERSION)
 
-# LineageOS Platform SDK Version
+# CygnusOS Platform SDK Version
 ADDITIONAL_SYSTEM_PROPERTIES += \
-    ro.lineage.build.version.plat.sdk=$(LINEAGE_PLATFORM_SDK_VERSION)
+    ro.cygnus.build.version.plat.sdk=$(CYGNUS_PLATFORM_SDK_VERSION)
 
-# LineageOS Platform Internal Version
+# CygnusOS Platform Internal Version
 ADDITIONAL_SYSTEM_PROPERTIES += \
-    ro.lineage.build.version.plat.rev=$(LINEAGE_PLATFORM_REV)
+    ro.cygnus.build.version.plat.rev=$(CYGNUS_PLATFORM_REV)

@@ -2,8 +2,8 @@
 readonly android_version=14 # For update-build-desc-fingerprint.sh
 readonly aosp_tag_match=android-14.0 # For update-device-vars.sh
 
-readonly os_branch=lineage-21.0
-readonly device_branch=lineage-21
+readonly os_branch=cygnus-21.0
+readonly device_branch=cygnus-21
 
 readonly prev_common_aosp_tag=android-14.0.0_r17 # Dec 2023, Pixel 6 - 8
 readonly common_aosp_tag=android-14.0.0_r20 # Jan 2024, Pixel 7 - 8

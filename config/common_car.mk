@@ -1,5 +1,5 @@
-# Inherit common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common.mk)
+# Inherit common Cygnus stuff
+$(call inherit-product, vendor/cygnus/config/common.mk)
 
-# Inherit Lineage car device tree
-$(call inherit-product, device/lineage/car/lineage_car.mk)
+# Inherit Cygnus car device tree
+$(call inherit-product, device/cygnus/car/cygnus_car.mk)
